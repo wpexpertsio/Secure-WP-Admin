@@ -3,6 +3,7 @@
 Simple Plugin to lock your WP-admin login screen with some PIN to make it more secure.
 
 **Description**
+
 Want to lock your WP-admin login screen with some PIN to make it more secure? Then this is the right plugin. Using Secure WP Admin you can lock your wp-admin login form with a seceret PIN just to make it little more secure.
 
 **Features**
@@ -25,7 +26,6 @@ Will be available soon.
 
 2. If successful, click Activate Plugin to activate it and you  are ready to go.
 
-### Frequently Asked Questions
 
 ### How to Use Secure WP Admin
 Just after activting set password from Secure WP Admin Settings tab and enable it and you are done.
