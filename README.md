@@ -33,6 +33,9 @@ Just after activting set password from Secure WP Admin Settings tab and enable i
 
 ### Changelog
 
+**1.3**
+* Add Code compatibility with wordpress 4.9.2
+
 **1.0**
 * Initial release
 
