@@ -5,17 +5,16 @@
  * function to add PIN protection functionality
  */
 if ( !is_admin() && in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) )   ) :  // to make sure this will not execute if user is already in dashboard
-
+ 
 
 function swpa_display_security_form(){
 
 
-        if( swpa_get_option('enable') != 'on' )  // check if this functionality is enabled
+        if( swpad_get_option('wpsp_enable') != 'on' )  // check if this functionality is enabled
             return false;
 
 
-        $pin = swpa_get_option('pin');  // Get saved PIN
-
+        $pin = swpad_get_option('wpsp_pin');  // Get saved PIN
 
         if ( isset($_COOKIE['swpa_pass']) && $pin == $_COOKIE['swpa_pass'] ) // to check if PIN cookie exist
             return false;
@@ -99,20 +98,20 @@ function swpa_display_security_form(){
             </style>
             <div class="container" >
                 <div class="swpa-logo-div">
-                    <?php  if( swpa_get_option('logo_image') != false ){ $logo_url = wp_get_attachment_url( swpa_get_option('logo_image') ); } else { $logo_url =  plugins_url( 'img/default-logo.png', dirname(__FILE__) ); }?>
-                    <img class="swpa-logo" style="height:<?php echo swpa_get_option('logo_width'); ?>  !important; width:<?php echo swpa_get_option('logo_height'); ?> !important;" src="<?php echo $logo_url; ?>" alt="" >
+                    <?php  if( swpad_get_option('wpsp_logo_image') != false ){ $logo_url = wp_get_attachment_url( swpad_get_option('wpsp_logo_image') ); } else { $logo_url =  plugins_url( 'img/default-logo.png', dirname(__FILE__) ); }?>
+                    <img class="swpa-logo" style="height:<?php echo swpad_get_option('wpsp_logo_width'); ?>  !important; width:<?php echo swpad_get_option('wpsp_logo_height'); ?> !important;" src="<?php echo $logo_url; ?>" alt="" >
                 </div>
                 <div class="wrapper">
                     <div class="objects_password_form style">
                         <form action="" method="post" >
                             <!-- <label> &nbsp;</label>-->
-                            <input id="user_pass" placeholder="<?php echo swpa_get_option('pin_placeholder'); ?>" type="password" name="page_password">
+                            <input id="user_pass" placeholder="<?php echo swpad_get_option('wpsp_pin_placeholder'); ?>" type="password" name="page_password">
                             <br>
-                            <input  type="submit" class="swpa-submit-button" value="<?php echo swpa_get_option('submit_label'); ?>">
+                            <input  type="submit" class="swpa-submit-button" value="<?php echo swpad_get_option('wpsp_submit_label'); ?>">
                         </form>
                         <?php
                         if(isset($_POST['page_password']))
-                            echo '<p class="error" style="color:#ff5348;">'.swpa_get_option('try_again_error') . '</p>'. '<br>';
+                            echo '<p class="error" style="color:#ff5348;">'.swpad_get_option('wpsp_try_again_error') . '</p>'. '<br>';
 
                         ?>
                     </div>
@@ -129,3 +128,11 @@ add_action('init','swpa_display_security_form',20 );
 
 
 endif;
+
+
+function swpad_get_option( $key = '' ) {
+
+ 
+return ( isset($key) && !empty($key) ) ? carbon_get_theme_option($key) : false ;
+
+}

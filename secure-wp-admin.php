@@ -1,14 +1,22 @@
 <?php
 /*
     Plugin Name: Secure WP Admin
-	Plugin URI:	http://wooexpert.com/
+	Plugin URI:	https://wpexperts.io/
     Description: Want to lock WP Admin with some PIN code? Then this is the right plugin.
-    Author: Wooexpert
-	Author URI: http://wooexpert.com/
-    Version: 1.0
+    Author: wpexpertsio
+	Author URI: https://wpexperts.io/
+    Version: 1.3
 */
-
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+
+/*if(!defined('Carbon_Fields_Plugin\PLUGIN_FILE')){ // CHECK IF CARBON ALREADY EXIST OR NOT
+    include 'includes/option_fields/carbon-fields-plugin.php';
+}*/
+
+if(!function_exists('carbon_fields_boot_plugin')){ // CHECK IF CARBON ALREADY EXIST OR NOT
+    include 'includes/option_fields/carbon-fields-plugin.php';
+}
 
 // Load plugin class files
 require_once( 'includes/class-swpa-plugin-template.php' );
@@ -26,17 +34,6 @@ require_once( 'includes/lib/class-swpa-plugin-template-admin-api.php' );
  * @since  1.0.0
  * @return object WordPress_Plugin_Template
  */
-function Initiate_secure_wp_admin_settings () {
 
-    $instance = SWPA_Plugin_Template::instance( __FILE__, '1.0.0' );
-
-    if ( is_null( $instance->settings ) ) {
-        $instance->settings = SWPA_Plugin_Template_Settings::instance( $instance );
-    }
-
-    return $instance;
-}
-
-Initiate_secure_wp_admin_settings();
 
 
